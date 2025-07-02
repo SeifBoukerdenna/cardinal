@@ -1,9 +1,306 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
+// Translations object
+const translations = {
+  fr: {
+    // Header
+    about: "À propos",
+    services: "Services",
+    whyUs: "Pourquoi nous",
+    contact: "Contact",
+    getQuote: "Obtenir un devis",
+    callNow: "Appelez maintenant",
+
+    // Hero Section
+    heroTrusted: "🏆 Fait confiance par 50+ entreprises manufacturières",
+    heroTitle: "Solutions de main-d'œuvre",
+    heroHighlight: "Premier",
+    heroSubtitle: "d'excellence manufacturière",
+    heroDescription: "Connectant les principaux fabricants du Québec avec des travailleurs temporaires qualifiés et fiables. Plus de 8 ans de résultats éprouvés dans les industries manufacturières et de recyclage.",
+    heroCtaPrimary: "Appelez pour du personnel immédiat",
+    heroCtaSecondary: "Demander un devis",
+
+    // Hero Stats
+    activeWorkers: "Travailleurs actifs",
+    yearsExperience: "Années d'expérience",
+    support: "Support",
+    partnerCompanies: "Entreprises partenaires",
+
+    // Trust Section
+    trustInsured: "Entièrement assuré et cautionné",
+    trustInsuredDesc: "Couverture de responsabilité complète pour votre tranquillité d'esprit",
+    trustWSIB: "Conforme CNESST",
+    trustWSIBDesc: "Tous les travailleurs entièrement couverts et conformes",
+    trustSameDay: "Placement le jour même",
+    trustSameDayDesc: "Solutions de personnel d'urgence disponibles 24h/7j",
+    trustScreened: "Travailleurs pré-sélectionnés",
+    trustScreenedDesc: "Vérifications d'antécédents et validation des compétences",
+
+    // About Section
+    aboutBadge: "À propos de Cardinal Placement",
+    aboutTitle: "Votre partenaire de dotation de confiance au Québec",
+    aboutSubtitle: "Établie à Laval, QC, nous sommes la solution de dotation de référence pour les entreprises manufacturières et de recyclage à travers le Québec depuis plus de 8 ans.",
+    missionTitle: "🎯 Notre mission",
+    missionDesc: "Faire le pont entre les travailleurs qualifiés et les entreprises en croissance, en veillant à ce que votre production ne s'arrête jamais tout en maintenant les plus hauts standards de sécurité et de qualité.",
+
+    // About Features
+    rapidResponse: "Réponse rapide",
+    rapidResponseDesc: "Travailleurs déployés dans les 4 heures de votre appel",
+    qualityScreening: "Sélection de qualité",
+    qualityScreeningDesc: "Vérification approfondie des antécédents et des compétences",
+    industryExpertise: "Expertise industrielle",
+    industryExpertiseDesc: "Compréhension approfondie des besoins manufacturiers",
+    scalableSolutions: "Solutions évolutives",
+    scalableSolutionsDesc: "De 1 travailleur à 50+ pour de grands projets",
+
+    // Industries
+    industriesTitle: "🏭 Industries que nous servons",
+    manufacturing: "Fabrication",
+    manufacturingDesc: "Assemblage, lignes de production, contrôle qualité",
+    recycling: "Recyclage",
+    recyclingDesc: "Tri, traitement, opération d'équipement",
+    warehousing: "Entreposage",
+    warehousingDesc: "Cueillette, emballage, gestion d'inventaire",
+    distribution: "Distribution",
+    distributionDesc: "Chargement, expédition, support logistique",
+
+    // Services Section
+    servicesBadge: "Nos services",
+    servicesTitle: "Solutions de dotation complètes",
+    servicesSubtitle: "De la couverture à court terme aux solutions de main-d'œuvre à long terme, nous avons ce qu'il vous faut.",
+
+    mostPopular: "Plus populaire",
+    emergencyStaffing: "Personnel d'urgence",
+    emergencyStaffingDesc: "Placement de travailleurs le jour même pour les besoins de production urgents. Disponible 24h/7j pour les situations critiques.",
+    responseTime4h: "✓ Temps de réponse 4 heures",
+    prescreenedWorkers: "✓ Travailleurs pré-sélectionnés",
+    availability247: "✓ Disponibilité 24h/7j",
+
+    manufacturingPersonnel: "Personnel manufacturier",
+    manufacturingPersonnelDesc: "Travailleurs qualifiés pour les lignes de production, l'assemblage, le contrôle qualité et l'opération de machines.",
+    experiencedOperators: "✓ Opérateurs expérimentés",
+    safetyCertified: "✓ Certifiés sécurité",
+    flexibleContracts: "✓ Contrats flexibles",
+
+    seasonalScaling: "Mise à l'échelle saisonnière",
+    seasonalScalingDesc: "Élargissez votre main-d'œuvre pendant les périodes de pointe avec des travailleurs temporaires fiables.",
+    scalableSols: "✓ Solutions évolutives",
+    longTermContracts: "✓ Contrats à long terme",
+    teamCoordination: "✓ Coordination d'équipe",
+
+    specializedRoles: "Rôles spécialisés",
+    specializedRolesDesc: "Opérateurs de chariot élévateur, techniciens de machines et autres rôles manufacturiers spécialisés.",
+    certifiedOperators: "✓ Opérateurs certifiés",
+    skillVerification: "✓ Vérification des compétences",
+    trainingSupport: "✓ Support de formation",
+
+    learnMore: "En savoir plus",
+    discussNeeds: "Discuter des besoins",
+
+    // Why Us Section
+    whyUsBadge: "Pourquoi Cardinal Placement",
+    whyUsTitle: "La différence qui compte",
+    clientSatisfaction: "Satisfaction client",
+    clientSatisfactionDesc: "Nos clients évaluent constamment notre service comme excellent",
+    averageResponse: "Réponse moyenne",
+    averageResponseDesc: "De votre appel au déploiement du travailleur",
+    retentionRate: "Taux de rétention",
+    retentionRateDesc: "Les travailleurs terminent leurs affectations avec succès",
+    supportAvailable: "Support disponible",
+    supportAvailableDesc: "Support 24h/7j pour les urgences",
+
+    testimonialQuote: "\"Cardinal Placement a été notre partenaire de dotation de référence depuis 3 ans. Leur temps de réponse rapide et leurs travailleurs de qualité nous ont aidés à respecter chaque échéancier de production.\"",
+    testimonialAuthor: "— Gestionnaire des opérations, Entreprise manufacturière leader",
+
+    // Contact Section
+    contactBadge: "Entrer en contact",
+    contactTitle: "Prêt à résoudre vos défis de dotation?",
+    contactSubtitle: "Contactez-nous aujourd'hui pour des solutions de dotation immédiates ou pour discuter de vos besoins de main-d'œuvre à long terme.",
+
+    president: "Président et directeur commercial",
+    experience8Years: "8+ années en solutions de dotation",
+
+    emergencyHotline: "Ligne d'urgence personnel",
+    emergencyAvailable: "Disponible 24h/7j pour besoins urgents",
+    businessInquiries: "Demandes commerciales",
+    responseWithin2h: "Réponse dans les 2 heures",
+    serviceArea: "Zone de service",
+    serviceAreaDesc: "Région du Grand Montréal et Laval",
+    businessHours: "Heures d'affaires",
+    businessHoursDesc: "Lun-Ven: 6h - 20h",
+    emergencyStaffingAvailable: "Personnel d'urgence disponible 24h/7j",
+
+    needWorkersToday: "🚨 Besoin de travailleurs aujourd'hui?",
+    needWorkersTodayDesc: "Appelez notre ligne d'urgence pour un placement le jour même",
+    callEmergencyLine: "Appeler la ligne d'urgence",
+    planAhead: "📋 Planifiez à l'avance",
+    planAheadDesc: "Demandez un devis personnalisé pour vos futurs besoins en personnel",
+    requestQuote: "Demander un devis",
+
+    // Footer
+    footerTagline: "Votre partenaire de main-d'œuvre manufacturière",
+    quickContact: "Contact rapide",
+    certifications: "Certifications",
+    fullyInsured: "🛡️ Entièrement assuré",
+    wsibCompliant: "✅ Conforme CNESST",
+    experienceYears: "🏆 8+ années d'expérience",
+    footerRights: "Cardinal Placement Services Inc. Tous droits réservés.",
+    footerDisclaimer: "Agence de dotation licenciée desservant les industries manufacturières et de recyclage du Québec."
+  },
+  en: {
+    // Header
+    about: "About",
+    services: "Services",
+    whyUs: "Why Choose Us",
+    contact: "Contact",
+    getQuote: "Get Quote",
+    callNow: "Call Now",
+
+    // Hero Section
+    heroTrusted: "🏆 Trusted by 50+ Manufacturing Companies",
+    heroTitle: "Workforce Solutions",
+    heroHighlight: "Premier",
+    heroSubtitle: "for Manufacturing Excellence",
+    heroDescription: "Connecting Quebec's leading manufacturers with skilled, reliable temporary workers. Over 8 years of proven results in manufacturing and recycling industries.",
+    heroCtaPrimary: "Call for Immediate Staffing",
+    heroCtaSecondary: "Request Quote",
+
+    // Hero Stats
+    activeWorkers: "Active Workers",
+    yearsExperience: "Years Experience",
+    support: "Support",
+    partnerCompanies: "Partner Companies",
+
+    // Trust Section
+    trustInsured: "Fully Insured & Bonded",
+    trustInsuredDesc: "Complete liability coverage for your peace of mind",
+    trustWSIB: "WSIB Compliant",
+    trustWSIBDesc: "All workers fully covered and compliant",
+    trustSameDay: "Same-Day Placement",
+    trustSameDayDesc: "Emergency staffing solutions available 24/7",
+    trustScreened: "Pre-Screened Workers",
+    trustScreenedDesc: "Background checks and skill verification",
+
+    // About Section
+    aboutBadge: "About Cardinal Placement",
+    aboutTitle: "Your Trusted Staffing Partner in Quebec",
+    aboutSubtitle: "Established in Laval, QC, we've been the go-to staffing solution for manufacturing and recycling companies across Quebec for over 8 years.",
+    missionTitle: "🎯 Our Mission",
+    missionDesc: "To bridge the gap between skilled workers and growing businesses, ensuring your production never stops while maintaining the highest standards of safety and quality.",
+
+    // About Features
+    rapidResponse: "Rapid Response",
+    rapidResponseDesc: "Workers deployed within 4 hours of your call",
+    qualityScreening: "Quality Screening",
+    qualityScreeningDesc: "Thorough background and skill verification",
+    industryExpertise: "Industry Expertise",
+    industryExpertiseDesc: "Deep understanding of manufacturing needs",
+    scalableSolutions: "Scalable Solutions",
+    scalableSolutionsDesc: "From 1 worker to 50+ for large projects",
+
+    // Industries
+    industriesTitle: "🏭 Industries We Serve",
+    manufacturing: "Manufacturing",
+    manufacturingDesc: "Assembly, production lines, quality control",
+    recycling: "Recycling",
+    recyclingDesc: "Sorting, processing, equipment operation",
+    warehousing: "Warehousing",
+    warehousingDesc: "Picking, packing, inventory management",
+    distribution: "Distribution",
+    distributionDesc: "Loading, shipping, logistics support",
+
+    // Services Section
+    servicesBadge: "Our Services",
+    servicesTitle: "Comprehensive Staffing Solutions",
+    servicesSubtitle: "From short-term coverage to long-term workforce solutions, we have you covered.",
+
+    mostPopular: "Most Popular",
+    emergencyStaffing: "Emergency Staffing",
+    emergencyStaffingDesc: "Same-day worker placement for urgent production needs. Available 24/7 for critical situations.",
+    responseTime4h: "✓ 4-hour response time",
+    prescreenedWorkers: "✓ Pre-screened workers",
+    availability247: "✓ 24/7 availability",
+
+    manufacturingPersonnel: "Manufacturing Personnel",
+    manufacturingPersonnelDesc: "Skilled workers for production lines, assembly, quality control, and machine operation.",
+    experiencedOperators: "✓ Experienced operators",
+    safetyCertified: "✓ Safety certified",
+    flexibleContracts: "✓ Flexible contracts",
+
+    seasonalScaling: "Seasonal Scaling",
+    seasonalScalingDesc: "Expand your workforce during peak seasons with reliable temporary workers.",
+    scalableSols: "✓ Scalable solutions",
+    longTermContracts: "✓ Long-term contracts",
+    teamCoordination: "✓ Team coordination",
+
+    specializedRoles: "Specialized Roles",
+    specializedRolesDesc: "Forklift operators, machine technicians, and other specialized manufacturing roles.",
+    certifiedOperators: "✓ Certified operators",
+    skillVerification: "✓ Skill verification",
+    trainingSupport: "✓ Training support",
+
+    learnMore: "Learn More",
+    discussNeeds: "Discuss Needs",
+
+    // Why Us Section
+    whyUsBadge: "Why Cardinal Placement",
+    whyUsTitle: "The Difference That Matters",
+    clientSatisfaction: "Client Satisfaction",
+    clientSatisfactionDesc: "Our clients consistently rate our service as excellent",
+    averageResponse: "Average Response",
+    averageResponseDesc: "From your call to worker deployment",
+    retentionRate: "Retention Rate",
+    retentionRateDesc: "Workers complete their assignments successfully",
+    supportAvailable: "Support Available",
+    supportAvailableDesc: "Round-the-clock support for emergencies",
+
+    testimonialQuote: "\"Cardinal Placement has been our go-to staffing partner for 3 years. Their quick response time and quality workers have helped us meet every production deadline.\"",
+    testimonialAuthor: "— Operations Manager, Leading Manufacturing Company",
+
+    // Contact Section
+    contactBadge: "Get In Touch",
+    contactTitle: "Ready to Solve Your Staffing Challenges?",
+    contactSubtitle: "Contact us today for immediate staffing solutions or to discuss your long-term workforce needs.",
+
+    president: "President & Commercial Director",
+    experience8Years: "8+ years in staffing solutions",
+
+    emergencyHotline: "Emergency Staffing Hotline",
+    emergencyAvailable: "Available 24/7 for urgent needs",
+    businessInquiries: "Business Inquiries",
+    responseWithin2h: "Response within 2 hours",
+    serviceArea: "Service Area",
+    serviceAreaDesc: "Greater Montreal & Laval Region",
+    businessHours: "Business Hours",
+    businessHoursDesc: "Mon-Fri: 6 AM - 8 PM",
+    emergencyStaffingAvailable: "Emergency staffing available 24/7",
+
+    needWorkersToday: "🚨 Need Workers Today?",
+    needWorkersTodayDesc: "Call our emergency staffing hotline for same-day placement",
+    callEmergencyLine: "Call Emergency Line",
+    planAhead: "📋 Plan Ahead",
+    planAheadDesc: "Request a custom quote for your upcoming staffing needs",
+    requestQuote: "Request Quote",
+
+    // Footer
+    footerTagline: "Your Manufacturing Workforce Partner",
+    quickContact: "Quick Contact",
+    certifications: "Certifications",
+    fullyInsured: "🛡️ Fully Insured",
+    wsibCompliant: "✅ WSIB Compliant",
+    experienceYears: "🏆 8+ Years Experience",
+    footerRights: "Cardinal Placement Services Inc. All rights reserved.",
+    footerDisclaimer: "Licensed staffing agency serving Quebec manufacturing and recycling industries."
+  }
+};
+
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [language, setLanguage] = useState('fr'); // Default to French
+
+  const t = translations[language as keyof typeof translations];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,7 +316,7 @@ function App() {
       <div className="floating-contact">
         <a href="tel:514-463-4117" className="floating-btn">
           <span className="phone-icon">📞</span>
-          <span className="contact-text">Call Now</span>
+          <span className="contact-text">{t.callNow}</span>
         </a>
       </div>
 
@@ -43,62 +340,80 @@ function App() {
               <span className="placement">PLACEMENT SERVICES</span>
             </div>
           </div>
-          <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
-            <a href="#about" className="nav-link">About</a>
-            <a href="#services" className="nav-link">Services</a>
-            <a href="#why-us" className="nav-link">Why Choose Us</a>
-            <a href="#contact" className="nav-link">Contact</a>
-            <a href="tel:514-463-4117" className="nav-cta">Get Quote</a>
-          </nav>
-          <button
-            className="menu-toggle"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+
+          <div className="header-right">
+            <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
+              <a href="#about" className="nav-link">{t.about}</a>
+              <a href="#services" className="nav-link">{t.services}</a>
+              <a href="#why-us" className="nav-link">{t.whyUs}</a>
+              <a href="#contact" className="nav-link">{t.contact}</a>
+              <a href="tel:514-463-4117" className="nav-cta">{t.getQuote}</a>
+            </nav>
+
+            <div className="language-switcher">
+              <button
+                className={`lang-btn ${language === 'fr' ? 'active' : ''}`}
+                onClick={() => setLanguage('fr')}
+              >
+                FR
+              </button>
+              <button
+                className={`lang-btn ${language === 'en' ? 'active' : ''}`}
+                onClick={() => setLanguage('en')}
+              >
+                EN
+              </button>
+            </div>
+
+            <button
+              className="menu-toggle"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
         </header>
 
         <div className="hero-content">
           <div className="hero-badge">
-            <span>🏆 Trusted by 50+ Manufacturing Companies</span>
+            <span>{t.heroTrusted}</span>
           </div>
           <h1 className="hero-title">
-            Premier <span className="highlight">Workforce Solutions</span> for Manufacturing Excellence
+            {t.heroHighlight} <span className="highlight">{t.heroTitle}</span> {t.heroSubtitle}
           </h1>
           <p className="hero-subtitle">
-            Connecting Quebec's leading manufacturers with skilled, reliable temporary workers.
-            Over 8 years of proven results in manufacturing and recycling industries.
+            {t.heroDescription}
           </p>
 
           <div className="hero-cta">
             <a href="tel:514-463-4117" className="cta-primary">
               <span>📞</span>
-              Call for Immediate Staffing
+              {t.heroCtaPrimary}
             </a>
             <a href="mailto:info@azcardinal.ca" className="cta-secondary">
               <span>📧</span>
-              Request Quote
+              {t.heroCtaSecondary}
             </a>
           </div>
 
           <div className="hero-stats">
             <div className="stat">
               <span className="stat-number">150+</span>
-              <span className="stat-label">Active Workers</span>
+              <span className="stat-label">{t.activeWorkers}</span>
             </div>
             <div className="stat">
               <span className="stat-number">8+</span>
-              <span className="stat-label">Years Experience</span>
+              <span className="stat-label">{t.yearsExperience}</span>
             </div>
             <div className="stat">
               <span className="stat-number">24/7</span>
-              <span className="stat-label">Support</span>
+              <span className="stat-label">{t.support}</span>
             </div>
             <div className="stat">
               <span className="stat-number">50+</span>
-              <span className="stat-label">Partner Companies</span>
+              <span className="stat-label">{t.partnerCompanies}</span>
             </div>
           </div>
         </div>
@@ -111,23 +426,23 @@ function App() {
             <div className="trust-grid">
               <div className="trust-item">
                 <div className="trust-icon">🛡️</div>
-                <h3>Fully Insured & Bonded</h3>
-                <p>Complete liability coverage for your peace of mind</p>
+                <h3>{t.trustInsured}</h3>
+                <p>{t.trustInsuredDesc}</p>
               </div>
               <div className="trust-item">
                 <div className="trust-icon">✅</div>
-                <h3>WSIB Compliant</h3>
-                <p>All workers fully covered and compliant</p>
+                <h3>{t.trustWSIB}</h3>
+                <p>{t.trustWSIBDesc}</p>
               </div>
               <div className="trust-item">
                 <div className="trust-icon">🎯</div>
-                <h3>Same-Day Placement</h3>
-                <p>Emergency staffing solutions available 24/7</p>
+                <h3>{t.trustSameDay}</h3>
+                <p>{t.trustSameDayDesc}</p>
               </div>
               <div className="trust-item">
                 <div className="trust-icon">📋</div>
-                <h3>Pre-Screened Workers</h3>
-                <p>Background checks and skill verification</p>
+                <h3>{t.trustScreened}</h3>
+                <p>{t.trustScreenedDesc}</p>
               </div>
             </div>
           </div>
@@ -137,20 +452,18 @@ function App() {
         <section id="about" className="section about-section">
           <div className="container">
             <div className="section-header">
-              <div className="section-badge">About Cardinal Placement</div>
-              <h2 className="section-title">Your Trusted Staffing Partner in Quebec</h2>
+              <div className="section-badge">{t.aboutBadge}</div>
+              <h2 className="section-title">{t.aboutTitle}</h2>
               <p className="section-subtitle">
-                Established in Laval, QC, we've been the go-to staffing solution for manufacturing
-                and recycling companies across Quebec for over 8 years.
+                {t.aboutSubtitle}
               </p>
             </div>
             <div className="about-content">
               <div className="about-text">
                 <div className="highlight-box">
-                  <h3>🎯 Our Mission</h3>
+                  <h3>{t.missionTitle}</h3>
                   <p>
-                    To bridge the gap between skilled workers and growing businesses, ensuring
-                    your production never stops while maintaining the highest standards of safety and quality.
+                    {t.missionDesc}
                   </p>
                 </div>
 
@@ -158,29 +471,29 @@ function App() {
                   <div className="feature">
                     <div className="feature-icon">⚡</div>
                     <div>
-                      <h4>Rapid Response</h4>
-                      <p>Workers deployed within 4 hours of your call</p>
+                      <h4>{t.rapidResponse}</h4>
+                      <p>{t.rapidResponseDesc}</p>
                     </div>
                   </div>
                   <div className="feature">
                     <div className="feature-icon">🔍</div>
                     <div>
-                      <h4>Quality Screening</h4>
-                      <p>Thorough background and skill verification</p>
+                      <h4>{t.qualityScreening}</h4>
+                      <p>{t.qualityScreeningDesc}</p>
                     </div>
                   </div>
                   <div className="feature">
                     <div className="feature-icon">💼</div>
                     <div>
-                      <h4>Industry Expertise</h4>
-                      <p>Deep understanding of manufacturing needs</p>
+                      <h4>{t.industryExpertise}</h4>
+                      <p>{t.industryExpertiseDesc}</p>
                     </div>
                   </div>
                   <div className="feature">
                     <div className="feature-icon">📈</div>
                     <div>
-                      <h4>Scalable Solutions</h4>
-                      <p>From 1 worker to 50+ for large projects</p>
+                      <h4>{t.scalableSolutions}</h4>
+                      <p>{t.scalableSolutionsDesc}</p>
                     </div>
                   </div>
                 </div>
@@ -188,34 +501,34 @@ function App() {
 
               <div className="about-visual">
                 <div className="industry-highlight">
-                  <h3>🏭 Industries We Serve</h3>
+                  <h3>{t.industriesTitle}</h3>
                   <div className="industry-list">
                     <div className="industry-item">
                       <span className="industry-icon">🏭</span>
                       <div>
-                        <strong>Manufacturing</strong>
-                        <p>Assembly, production lines, quality control</p>
+                        <strong>{t.manufacturing}</strong>
+                        <p>{t.manufacturingDesc}</p>
                       </div>
                     </div>
                     <div className="industry-item">
                       <span className="industry-icon">♻️</span>
                       <div>
-                        <strong>Recycling</strong>
-                        <p>Sorting, processing, equipment operation</p>
+                        <strong>{t.recycling}</strong>
+                        <p>{t.recyclingDesc}</p>
                       </div>
                     </div>
                     <div className="industry-item">
                       <span className="industry-icon">📦</span>
                       <div>
-                        <strong>Warehousing</strong>
-                        <p>Picking, packing, inventory management</p>
+                        <strong>{t.warehousing}</strong>
+                        <p>{t.warehousingDesc}</p>
                       </div>
                     </div>
                     <div className="industry-item">
                       <span className="industry-icon">🚛</span>
                       <div>
-                        <strong>Distribution</strong>
-                        <p>Loading, shipping, logistics support</p>
+                        <strong>{t.distribution}</strong>
+                        <p>{t.distributionDesc}</p>
                       </div>
                     </div>
                   </div>
@@ -229,68 +542,68 @@ function App() {
         <section id="services" className="section services-section">
           <div className="container">
             <div className="section-header">
-              <div className="section-badge">Our Services</div>
-              <h2 className="section-title">Comprehensive Staffing Solutions</h2>
+              <div className="section-badge">{t.servicesBadge}</div>
+              <h2 className="section-title">{t.servicesTitle}</h2>
               <p className="section-subtitle">
-                From short-term coverage to long-term workforce solutions, we have you covered.
+                {t.servicesSubtitle}
               </p>
             </div>
             <div className="services-grid">
               <div className="service-card featured">
                 <div className="service-header">
                   <div className="service-icon">⚡</div>
-                  <span className="service-badge">Most Popular</span>
+                  <span className="service-badge">{t.mostPopular}</span>
                 </div>
-                <h3>Emergency Staffing</h3>
-                <p>Same-day worker placement for urgent production needs. Available 24/7 for critical situations.</p>
+                <h3>{t.emergencyStaffing}</h3>
+                <p>{t.emergencyStaffingDesc}</p>
                 <div className="service-features">
-                  <span>✓ 4-hour response time</span>
-                  <span>✓ Pre-screened workers</span>
-                  <span>✓ 24/7 availability</span>
+                  <span>{t.responseTime4h}</span>
+                  <span>{t.prescreenedWorkers}</span>
+                  <span>{t.availability247}</span>
                 </div>
-                <a href="tel:514-463-4117" className="service-cta">Call Now</a>
+                <a href="tel:514-463-4117" className="service-cta">{t.callNow}</a>
               </div>
 
               <div className="service-card">
                 <div className="service-header">
                   <div className="service-icon">🏭</div>
                 </div>
-                <h3>Manufacturing Personnel</h3>
-                <p>Skilled workers for production lines, assembly, quality control, and machine operation.</p>
+                <h3>{t.manufacturingPersonnel}</h3>
+                <p>{t.manufacturingPersonnelDesc}</p>
                 <div className="service-features">
-                  <span>✓ Experienced operators</span>
-                  <span>✓ Safety certified</span>
-                  <span>✓ Flexible contracts</span>
+                  <span>{t.experiencedOperators}</span>
+                  <span>{t.safetyCertified}</span>
+                  <span>{t.flexibleContracts}</span>
                 </div>
-                <a href="mailto:info@azcardinal.ca" className="service-cta">Get Quote</a>
+                <a href="mailto:info@azcardinal.ca" className="service-cta">{t.getQuote}</a>
               </div>
 
               <div className="service-card">
                 <div className="service-header">
                   <div className="service-icon">📈</div>
                 </div>
-                <h3>Seasonal Scaling</h3>
-                <p>Expand your workforce during peak seasons with reliable temporary workers.</p>
+                <h3>{t.seasonalScaling}</h3>
+                <p>{t.seasonalScalingDesc}</p>
                 <div className="service-features">
-                  <span>✓ Scalable solutions</span>
-                  <span>✓ Long-term contracts</span>
-                  <span>✓ Team coordination</span>
+                  <span>{t.scalableSols}</span>
+                  <span>{t.longTermContracts}</span>
+                  <span>{t.teamCoordination}</span>
                 </div>
-                <a href="mailto:info@azcardinal.ca" className="service-cta">Learn More</a>
+                <a href="mailto:info@azcardinal.ca" className="service-cta">{t.learnMore}</a>
               </div>
 
               <div className="service-card">
                 <div className="service-header">
                   <div className="service-icon">🎯</div>
                 </div>
-                <h3>Specialized Roles</h3>
-                <p>Forklift operators, machine technicians, and other specialized manufacturing roles.</p>
+                <h3>{t.specializedRoles}</h3>
+                <p>{t.specializedRolesDesc}</p>
                 <div className="service-features">
-                  <span>✓ Certified operators</span>
-                  <span>✓ Skill verification</span>
-                  <span>✓ Training support</span>
+                  <span>{t.certifiedOperators}</span>
+                  <span>{t.skillVerification}</span>
+                  <span>{t.trainingSupport}</span>
                 </div>
-                <a href="mailto:info@azcardinal.ca" className="service-cta">Discuss Needs</a>
+                <a href="mailto:info@azcardinal.ca" className="service-cta">{t.discussNeeds}</a>
               </div>
             </div>
           </div>
@@ -300,45 +613,45 @@ function App() {
         <section id="why-us" className="section why-us-section">
           <div className="container">
             <div className="section-header">
-              <div className="section-badge">Why Cardinal Placement</div>
-              <h2 className="section-title">The Difference That Matters</h2>
+              <div className="section-badge">{t.whyUsBadge}</div>
+              <h2 className="section-title">{t.whyUsTitle}</h2>
             </div>
             <div className="why-us-grid">
               <div className="why-us-item">
                 <div className="metric">
                   <span className="metric-number">98%</span>
-                  <span className="metric-label">Client Satisfaction</span>
+                  <span className="metric-label">{t.clientSatisfaction}</span>
                 </div>
-                <p>Our clients consistently rate our service as excellent</p>
+                <p>{t.clientSatisfactionDesc}</p>
               </div>
               <div className="why-us-item">
                 <div className="metric">
                   <span className="metric-number">4hrs</span>
-                  <span className="metric-label">Average Response</span>
+                  <span className="metric-label">{t.averageResponse}</span>
                 </div>
-                <p>From your call to worker deployment</p>
+                <p>{t.averageResponseDesc}</p>
               </div>
               <div className="why-us-item">
                 <div className="metric">
                   <span className="metric-number">95%</span>
-                  <span className="metric-label">Retention Rate</span>
+                  <span className="metric-label">{t.retentionRate}</span>
                 </div>
-                <p>Workers complete their assignments successfully</p>
+                <p>{t.retentionRateDesc}</p>
               </div>
               <div className="why-us-item">
                 <div className="metric">
                   <span className="metric-number">24/7</span>
-                  <span className="metric-label">Support Available</span>
+                  <span className="metric-label">{t.supportAvailable}</span>
                 </div>
-                <p>Round-the-clock support for emergencies</p>
+                <p>{t.supportAvailableDesc}</p>
               </div>
             </div>
 
             <div className="testimonial">
               <blockquote>
-                "Cardinal Placement has been our go-to staffing partner for 3 years. Their quick response time and quality workers have helped us meet every production deadline."
+                {t.testimonialQuote}
               </blockquote>
-              <cite>— Operations Manager, Leading Manufacturing Company</cite>
+              <cite>{t.testimonialAuthor}</cite>
             </div>
           </div>
         </section>
@@ -347,10 +660,10 @@ function App() {
         <section id="contact" className="section contact-section">
           <div className="container">
             <div className="section-header">
-              <div className="section-badge">Get In Touch</div>
-              <h2 className="section-title">Ready to Solve Your Staffing Challenges?</h2>
+              <div className="section-badge">{t.contactBadge}</div>
+              <h2 className="section-title">{t.contactTitle}</h2>
               <p className="section-subtitle">
-                Contact us today for immediate staffing solutions or to discuss your long-term workforce needs.
+                {t.contactSubtitle}
               </p>
             </div>
 
@@ -360,8 +673,8 @@ function App() {
                   <div className="person-avatar">AB</div>
                   <div className="person-details">
                     <h3>Adlen Boukerdenna</h3>
-                    <p className="title">President & Commercial Director</p>
-                    <p className="experience">8+ years in staffing solutions</p>
+                    <p className="title">{t.president}</p>
+                    <p className="experience">{t.experience8Years}</p>
                   </div>
                 </div>
 
@@ -369,26 +682,26 @@ function App() {
                   <div className="contact-item priority">
                     <div className="contact-icon">📞</div>
                     <div className="contact-details">
-                      <span className="contact-label">Emergency Staffing Hotline</span>
+                      <span className="contact-label">{t.emergencyHotline}</span>
                       <a href="tel:514-463-4117" className="contact-value primary">514-463-4117</a>
-                      <span className="availability">Available 24/7 for urgent needs</span>
+                      <span className="availability">{t.emergencyAvailable}</span>
                     </div>
                   </div>
 
                   <div className="contact-item">
                     <div className="contact-icon">📧</div>
                     <div className="contact-details">
-                      <span className="contact-label">Business Inquiries</span>
+                      <span className="contact-label">{t.businessInquiries}</span>
                       <a href="mailto:info@azcardinal.ca" className="contact-value">info@azcardinal.ca</a>
-                      <span className="availability">Response within 2 hours</span>
+                      <span className="availability">{t.responseWithin2h}</span>
                     </div>
                   </div>
 
                   <div className="contact-item">
                     <div className="contact-icon">📍</div>
                     <div className="contact-details">
-                      <span className="contact-label">Service Area</span>
-                      <span className="contact-value">Greater Montreal & Laval Region</span>
+                      <span className="contact-label">{t.serviceArea}</span>
+                      <span className="contact-value">{t.serviceAreaDesc}</span>
                       <span className="availability">193 Boul Daniel Johnson, Laval, QC H7V 2E3</span>
                     </div>
                   </div>
@@ -396,9 +709,9 @@ function App() {
                   <div className="contact-item">
                     <div className="contact-icon">⏰</div>
                     <div className="contact-details">
-                      <span className="contact-label">Business Hours</span>
-                      <span className="contact-value">Mon-Fri: 6 AM - 8 PM</span>
-                      <span className="availability">Emergency staffing available 24/7</span>
+                      <span className="contact-label">{t.businessHours}</span>
+                      <span className="contact-value">{t.businessHoursDesc}</span>
+                      <span className="availability">{t.emergencyStaffingAvailable}</span>
                     </div>
                   </div>
                 </div>
@@ -406,20 +719,20 @@ function App() {
 
               <div className="contact-cta">
                 <div className="cta-card">
-                  <h3>🚨 Need Workers Today?</h3>
-                  <p>Call our emergency staffing hotline for same-day placement</p>
+                  <h3>{t.needWorkersToday}</h3>
+                  <p>{t.needWorkersTodayDesc}</p>
                   <a href="tel:514-463-4117" className="cta-button urgent">
                     <span>📞</span>
-                    Call Emergency Line
+                    {t.callEmergencyLine}
                   </a>
                 </div>
 
                 <div className="cta-card">
-                  <h3>📋 Plan Ahead</h3>
-                  <p>Request a custom quote for your upcoming staffing needs</p>
+                  <h3>{t.planAhead}</h3>
+                  <p>{t.planAheadDesc}</p>
                   <a href="mailto:info@azcardinal.ca" className="cta-button">
                     <span>📧</span>
-                    Request Quote
+                    {t.requestQuote}
                   </a>
                 </div>
               </div>
@@ -438,29 +751,29 @@ function App() {
                 </div>
                 <div>
                   <span className="footer-company">Cardinal Placement Services</span>
-                  <span className="footer-tagline">Your Manufacturing Workforce Partner</span>
+                  <span className="footer-tagline">{t.footerTagline}</span>
                 </div>
               </div>
 
               <div className="footer-quick-contact">
-                <h4>Quick Contact</h4>
+                <h4>{t.quickContact}</h4>
                 <a href="tel:514-463-4117" className="footer-phone">📞 514-463-4117</a>
                 <a href="mailto:info@azcardinal.ca" className="footer-email">📧 info@azcardinal.ca</a>
               </div>
 
               <div className="footer-certifications">
-                <h4>Certifications</h4>
+                <h4>{t.certifications}</h4>
                 <div className="cert-badges">
-                  <span className="cert-badge">🛡️ Fully Insured</span>
-                  <span className="cert-badge">✅ WSIB Compliant</span>
-                  <span className="cert-badge">🏆 8+ Years Experience</span>
+                  <span className="cert-badge">{t.fullyInsured}</span>
+                  <span className="cert-badge">{t.wsibCompliant}</span>
+                  <span className="cert-badge">{t.experienceYears}</span>
                 </div>
               </div>
             </div>
 
             <div className="footer-bottom">
-              <p>&copy; {new Date().getFullYear()} Cardinal Placement Services Inc. All rights reserved.</p>
-              <p className="footer-disclaimer">Licensed staffing agency serving Quebec manufacturing and recycling industries.</p>
+              <p>&copy; {new Date().getFullYear()} {t.footerRights}</p>
+              <p className="footer-disclaimer">{t.footerDisclaimer}</p>
             </div>
           </div>
         </div>
