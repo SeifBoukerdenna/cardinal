@@ -13,34 +13,37 @@ const translations = {
     callNow: "Appelez maintenant",
 
     // Hero Section
-    heroTrusted: "🏆 Fait confiance par 50+ entreprises manufacturières",
+    heroTrusted: "🏆 Plus de 8 entreprises manufacturières nous font confiance",
     heroTitle: "Solutions de main-d'œuvre",
     heroHighlight: "Premier",
     heroSubtitle: "d'excellence manufacturière",
-    heroDescription: "Connectant les principaux fabricants du Québec avec des travailleurs temporaires qualifiés et fiables. Plus de 8 ans de résultats éprouvés dans les industries manufacturières et de recyclage.",
+    heroDescription: "Nous connectons les principaux fabricants du Québec avec des travailleurs temporaires qualifiés et fiables. Plus de 3 ans de résultats éprouvés dans les industries manufacturières et de recyclage.",
     heroCtaPrimary: "Appelez pour du personnel immédiat",
     heroCtaSecondary: "Demander un devis",
+    trustedBy: "Ils nous font confiance",
 
     // Hero Stats
     activeWorkers: "Travailleurs actifs",
     yearsExperience: "Années d'expérience",
-    support: "Support",
+    support: "Soutien",
     partnerCompanies: "Entreprises partenaires",
 
     // Trust Section
-    trustInsured: "Entièrement assuré et cautionné",
+    trustInsured: "Entièrement assuré",
     trustInsuredDesc: "Couverture de responsabilité complète pour votre tranquillité d'esprit",
     trustWSIB: "Conforme CNESST",
     trustWSIBDesc: "Tous les travailleurs entièrement couverts et conformes",
     trustSameDay: "Placement le jour même",
     trustSameDayDesc: "Solutions de personnel d'urgence disponibles 24h/7j",
     trustScreened: "Travailleurs pré-sélectionnés",
-    trustScreenedDesc: "Vérifications d'antécédents et validation des compétences",
+    trustScreenedDesc: "Vérification des antécédents et droits de travailler sur le territoire",
+    trustTransport: "Transport assuré",
+    trustTransportDesc: "Nous assurons le transport des employés vers votre site",
 
     // About Section
     aboutBadge: "À propos de Cardinal Placement",
     aboutTitle: "Votre partenaire de dotation de confiance au Québec",
-    aboutSubtitle: "Établie à Laval, QC, nous sommes la solution de dotation de référence pour les entreprises manufacturières et de recyclage à travers le Québec depuis plus de 8 ans.",
+    aboutSubtitle: "Établie à Laval, QC, nous sommes la solution de dotation de référence pour les entreprises manufacturières et de recyclage à travers le Québec depuis 2022.",
     missionTitle: "🎯 Notre mission",
     missionDesc: "Faire le pont entre les travailleurs qualifiés et les entreprises en croissance, en veillant à ce que votre production ne s'arrête jamais tout en maintenant les plus hauts standards de sécurité et de qualité.",
 
@@ -48,7 +51,7 @@ const translations = {
     rapidResponse: "Réponse rapide",
     rapidResponseDesc: "Travailleurs déployés dans les 4 heures de votre appel",
     qualityScreening: "Sélection de qualité",
-    qualityScreeningDesc: "Vérification approfondie des antécédents et des compétences",
+    qualityScreeningDesc: "Vérification approfondie des antécédents et validation des compétences",
     industryExpertise: "Expertise industrielle",
     industryExpertiseDesc: "Compréhension approfondie des besoins manufacturiers",
     scalableSolutions: "Solutions évolutives",
@@ -63,12 +66,14 @@ const translations = {
     warehousing: "Entreposage",
     warehousingDesc: "Cueillette, emballage, gestion d'inventaire",
     distribution: "Distribution",
-    distributionDesc: "Chargement, expédition, support logistique",
+    distributionDesc: "Chargement, expédition, soutien logistique",
+    agroFood: "Agro-alimentaire",
+    agroFoodDesc: "Production alimentaire, transformation, emballage",
 
     // Services Section
     servicesBadge: "Nos services",
     servicesTitle: "Solutions de dotation complètes",
-    servicesSubtitle: "De la couverture à court terme aux solutions de main-d'œuvre à long terme, nous avons ce qu'il vous faut.",
+    servicesSubtitle: "De la couverture à court terme aux solutions de main-d'œuvre à long terme, nous avons ce qu'il vous faut. Ouverts à n'importe quelle durée de contrat.",
 
     mostPopular: "Plus populaire",
     emergencyStaffing: "Personnel d'urgence",
@@ -90,10 +95,10 @@ const translations = {
     teamCoordination: "✓ Coordination d'équipe",
 
     specializedRoles: "Rôles spécialisés",
-    specializedRolesDesc: "Opérateurs de chariot élévateur, techniciens de machines et autres rôles manufacturiers spécialisés.",
+    specializedRolesDesc: "Opérateurs de chariot élévateur, électro-mécaniciens, techniciens de machines et autres rôles manufacturiers spécialisés.",
     certifiedOperators: "✓ Opérateurs certifiés",
     skillVerification: "✓ Vérification des compétences",
-    trainingSupport: "✓ Support de formation",
+    trainingSupport: "✓ Soutien de formation",
 
     learnMore: "En savoir plus",
     discussNeeds: "Discuter des besoins",
@@ -107,11 +112,8 @@ const translations = {
     averageResponseDesc: "De votre appel au déploiement du travailleur",
     retentionRate: "Taux de rétention",
     retentionRateDesc: "Les travailleurs terminent leurs affectations avec succès",
-    supportAvailable: "Support disponible",
-    supportAvailableDesc: "Support 24h/7j pour les urgences",
-
-    testimonialQuote: "\"Cardinal Placement a été notre partenaire de dotation de référence depuis 3 ans. Leur temps de réponse rapide et leurs travailleurs de qualité nous ont aidés à respecter chaque échéancier de production.\"",
-    testimonialAuthor: "— Gestionnaire des opérations, Entreprise manufacturière leader",
+    supportAvailable: "Soutien disponible",
+    supportAvailableDesc: "Soutien 24h/7j pour les urgences",
 
     // Contact Section
     contactBadge: "Entrer en contact",
@@ -119,14 +121,16 @@ const translations = {
     contactSubtitle: "Contactez-nous aujourd'hui pour des solutions de dotation immédiates ou pour discuter de vos besoins de main-d'œuvre à long terme.",
 
     president: "Président et directeur commercial",
-    experience8Years: "8+ années en solutions de dotation",
+    experience8Years: "3+ années en solutions de dotation",
 
-    emergencyHotline: "Ligne d'urgence personnel",
+    emergencyHotline: "Ligne d'urgence pour le personnel",
     emergencyAvailable: "Disponible 24h/7j pour besoins urgents",
     businessInquiries: "Demandes commerciales",
     responseWithin2h: "Réponse dans les 2 heures",
     serviceArea: "Zone de service",
     serviceAreaDesc: "Région du Grand Montréal et Laval",
+    officeAddress: "Adresse du bureau",
+    officeAddressValue: "5200 Boulevard des Laurentides, Laval, QC, H7K 2J8",
     businessHours: "Heures d'affaires",
     businessHoursDesc: "Lun-Ven: 6h - 20h",
     emergencyStaffingAvailable: "Personnel d'urgence disponible 24h/7j",
@@ -144,7 +148,7 @@ const translations = {
     certifications: "Certifications",
     fullyInsured: "🛡️ Entièrement assuré",
     wsibCompliant: "✅ Conforme CNESST",
-    experienceYears: "🏆 8+ années d'expérience",
+    experienceYears: "🏆 3+ années d'expérience",
     footerRights: "Cardinal Placement Services Inc. Tous droits réservés.",
     footerDisclaimer: "Agence de dotation licenciée desservant les industries manufacturières et de recyclage du Québec."
   },
@@ -158,13 +162,14 @@ const translations = {
     callNow: "Call Now",
 
     // Hero Section
-    heroTrusted: "🏆 Trusted by 50+ Manufacturing Companies",
+    heroTrusted: "🏆 Trusted by 8+ Manufacturing Companies",
     heroTitle: "Workforce Solutions",
     heroHighlight: "Premier",
     heroSubtitle: "for Manufacturing Excellence",
-    heroDescription: "Connecting Quebec's leading manufacturers with skilled, reliable temporary workers. Over 8 years of proven results in manufacturing and recycling industries.",
+    heroDescription: "Connecting Quebec's leading manufacturers with skilled, reliable temporary workers. Over 3 years of proven results in manufacturing and recycling industries.",
     heroCtaPrimary: "Call for Immediate Staffing",
     heroCtaSecondary: "Request Quote",
+    trustedBy: "Trusted By",
 
     // Hero Stats
     activeWorkers: "Active Workers",
@@ -180,12 +185,14 @@ const translations = {
     trustSameDay: "Same-Day Placement",
     trustSameDayDesc: "Emergency staffing solutions available 24/7",
     trustScreened: "Pre-Screened Workers",
-    trustScreenedDesc: "Background checks and skill verification",
+    trustScreenedDesc: "Background checks and work authorization verification",
+    trustTransport: "Transportation Provided",
+    trustTransportDesc: "We ensure employee transportation to your site",
 
     // About Section
     aboutBadge: "About Cardinal Placement",
     aboutTitle: "Your Trusted Staffing Partner in Quebec",
-    aboutSubtitle: "Established in Laval, QC, we've been the go-to staffing solution for manufacturing and recycling companies across Quebec for over 8 years.",
+    aboutSubtitle: "Established in Laval, QC, we've been the go-to staffing solution for manufacturing and recycling companies across Quebec since 2022.",
     missionTitle: "🎯 Our Mission",
     missionDesc: "To bridge the gap between skilled workers and growing businesses, ensuring your production never stops while maintaining the highest standards of safety and quality.",
 
@@ -209,11 +216,13 @@ const translations = {
     warehousingDesc: "Picking, packing, inventory management",
     distribution: "Distribution",
     distributionDesc: "Loading, shipping, logistics support",
+    agroFood: "Agri-Food",
+    agroFoodDesc: "Food production, processing, packaging",
 
     // Services Section
     servicesBadge: "Our Services",
     servicesTitle: "Comprehensive Staffing Solutions",
-    servicesSubtitle: "From short-term coverage to long-term workforce solutions, we have you covered.",
+    servicesSubtitle: "From short-term coverage to long-term workforce solutions, we have you covered. Open to any contract duration.",
 
     mostPopular: "Most Popular",
     emergencyStaffing: "Emergency Staffing",
@@ -235,7 +244,7 @@ const translations = {
     teamCoordination: "✓ Team coordination",
 
     specializedRoles: "Specialized Roles",
-    specializedRolesDesc: "Forklift operators, machine technicians, and other specialized manufacturing roles.",
+    specializedRolesDesc: "Forklift operators, electromechanics, machine technicians, and other specialized manufacturing roles.",
     certifiedOperators: "✓ Certified operators",
     skillVerification: "✓ Skill verification",
     trainingSupport: "✓ Training support",
@@ -255,16 +264,13 @@ const translations = {
     supportAvailable: "Support Available",
     supportAvailableDesc: "Round-the-clock support for emergencies",
 
-    testimonialQuote: "\"Cardinal Placement has been our go-to staffing partner for 3 years. Their quick response time and quality workers have helped us meet every production deadline.\"",
-    testimonialAuthor: "— Operations Manager, Leading Manufacturing Company",
-
     // Contact Section
     contactBadge: "Get In Touch",
     contactTitle: "Ready to Solve Your Staffing Challenges?",
     contactSubtitle: "Contact us today for immediate staffing solutions or to discuss your long-term workforce needs.",
 
     president: "President & Commercial Director",
-    experience8Years: "8+ years in staffing solutions",
+    experience8Years: "3+ years in staffing solutions",
 
     emergencyHotline: "Emergency Staffing Hotline",
     emergencyAvailable: "Available 24/7 for urgent needs",
@@ -272,6 +278,8 @@ const translations = {
     responseWithin2h: "Response within 2 hours",
     serviceArea: "Service Area",
     serviceAreaDesc: "Greater Montreal & Laval Region",
+    officeAddress: "Office Address",
+    officeAddressValue: "5200 Boulevard des Laurentides, Laval, QC, H7K 2J8",
     businessHours: "Business Hours",
     businessHoursDesc: "Mon-Fri: 6 AM - 8 PM",
     emergencyStaffingAvailable: "Emergency staffing available 24/7",
@@ -289,11 +297,23 @@ const translations = {
     certifications: "Certifications",
     fullyInsured: "🛡️ Fully Insured",
     wsibCompliant: "✅ WSIB Compliant",
-    experienceYears: "🏆 8+ Years Experience",
+    experienceYears: "🏆 3+ Years Experience",
     footerRights: "Cardinal Placement Services Inc. All rights reserved.",
     footerDisclaimer: "Licensed staffing agency serving Quebec manufacturing and recycling industries."
   }
 };
+
+// Client logos data
+const clients = [
+  { name: "GFL MATREC", id: 1 },
+  { name: "ENVIRON CONNEXION", id: 2 },
+  { name: "VIZU SOLUTION", id: 3 },
+  { name: "Gaudreau Environnement Inc", id: 4 },
+  { name: "WEST MANAGEMENT", id: 5 },
+  { name: "ALUMINIUM PROVOST", id: 6 },
+  { name: "Millet Plastic", id: 7 },
+  { name: "E360", id: 8 }
+];
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -398,13 +418,29 @@ function App() {
             </a>
           </div>
 
+          {/* Client Carousel */}
+          <div className="clients-section">
+            <h3 className="clients-title">{t.trustedBy}</h3>
+            <div className="clients-carousel">
+              <div className="clients-track">
+                {[...clients, ...clients].map((client, index) => (
+                  <div key={`${client.id}-${index}`} className="client-card">
+                    <div className="client-logo">
+                      {client.name}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
           <div className="hero-stats">
             <div className="stat">
               <span className="stat-number">150+</span>
               <span className="stat-label">{t.activeWorkers}</span>
             </div>
             <div className="stat">
-              <span className="stat-number">8+</span>
+              <span className="stat-number">3+</span>
               <span className="stat-label">{t.yearsExperience}</span>
             </div>
             <div className="stat">
@@ -412,7 +448,7 @@ function App() {
               <span className="stat-label">{t.support}</span>
             </div>
             <div className="stat">
-              <span className="stat-number">50+</span>
+              <span className="stat-number">8+</span>
               <span className="stat-label">{t.partnerCompanies}</span>
             </div>
           </div>
@@ -443,6 +479,11 @@ function App() {
                 <div className="trust-icon">📋</div>
                 <h3>{t.trustScreened}</h3>
                 <p>{t.trustScreenedDesc}</p>
+              </div>
+              <div className="trust-item">
+                <div className="trust-icon">🚗</div>
+                <h3>{t.trustTransport}</h3>
+                <p>{t.trustTransportDesc}</p>
               </div>
             </div>
           </div>
@@ -529,6 +570,13 @@ function App() {
                       <div>
                         <strong>{t.distribution}</strong>
                         <p>{t.distributionDesc}</p>
+                      </div>
+                    </div>
+                    <div className="industry-item">
+                      <span className="industry-icon">🌾</span>
+                      <div>
+                        <strong>{t.agroFood}</strong>
+                        <p>{t.agroFoodDesc}</p>
                       </div>
                     </div>
                   </div>
@@ -646,13 +694,6 @@ function App() {
                 <p>{t.supportAvailableDesc}</p>
               </div>
             </div>
-
-            <div className="testimonial">
-              <blockquote>
-                {t.testimonialQuote}
-              </blockquote>
-              <cite>{t.testimonialAuthor}</cite>
-            </div>
           </div>
         </section>
 
@@ -700,9 +741,9 @@ function App() {
                   <div className="contact-item">
                     <div className="contact-icon">📍</div>
                     <div className="contact-details">
-                      <span className="contact-label">{t.serviceArea}</span>
-                      <span className="contact-value">{t.serviceAreaDesc}</span>
-                      <span className="availability">193 Boul Daniel Johnson, Laval, QC H7V 2E3</span>
+                      <span className="contact-label">{t.officeAddress}</span>
+                      <span className="contact-value">{t.officeAddressValue}</span>
+                      <span className="availability">{t.serviceAreaDesc}</span>
                     </div>
                   </div>
 
