@@ -305,14 +305,14 @@ const translations = {
 
 // Client logos data
 const clients = [
-  { name: "GFL MATREC", id: 1 },
-  { name: "ENVIRON CONNEXION", id: 2 },
-  { name: "VIZU SOLUTION", id: 3 },
-  { name: "Gaudreau Environnement Inc", id: 4 },
-  { name: "WEST MANAGEMENT", id: 5 },
-  { name: "ALUMINIUM PROVOST", id: 6 },
-  { name: "Millet Plastic", id: 7 },
-  { name: "E360", id: 8 }
+  { name: "GFL Environmental", id: 1, logo: "/logos/gfl.jpeg" },
+  { name: "Enviro Connexions", id: 2, logo: "/logos/enviro_connexion.png" },
+  { name: "Vizu Solution", id: 3, logo: "/logos/vizusolution_inc_logo.jpeg" },
+  { name: "Gaudreau Environnement", id: 4, logo: "/logos/gaudreau_environnement_inc_logo.jpeg" },
+  { name: "West Management", id: 5, logo: "/logos/west_management.png" },
+  { name: "Aluminium Provost", id: 6, logo: "/logos/prevost-logo-couleur-rgb-mini.jpg" },
+  { name: "Millet Plastic", id: 7, logo: "/logos/MILLET_PlastiqueCANADA_final_CMJN-e1562352337570.png" },
+  { name: "E360", id: 8, logo: "/logos/e360.webp" }
 ];
 
 function App() {
@@ -425,9 +425,13 @@ function App() {
               <div className="clients-track">
                 {[...clients, ...clients].map((client, index) => (
                   <div key={`${client.id}-${index}`} className="client-card">
-                    <div className="client-logo">
-                      {client.name}
-                    </div>
+                    <img
+                      src={client.logo}
+                      alt={client.name}
+                      className="client-logo-img"
+                      loading="lazy"
+                    />
+                    <span className="client-name">{client.name}</span>
                   </div>
                 ))}
               </div>
