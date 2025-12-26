@@ -102,6 +102,7 @@ const translations = {
 
     learnMore: "En savoir plus",
     discussNeeds: "Discuter des besoins",
+    scrollHint: "Glissez pour voir plus →",
 
     // Why Us Section
     whyUsBadge: "Pourquoi Cardinal Placement",
@@ -251,6 +252,7 @@ const translations = {
 
     learnMore: "Learn More",
     discussNeeds: "Discuss Needs",
+    scrollHint: "Scroll to see more →",
 
     // Why Us Section
     whyUsBadge: "Why Cardinal Placement",
@@ -600,62 +602,67 @@ function App() {
                 {t.servicesSubtitle}
               </p>
             </div>
-            <div className="services-grid">
-              <div className="service-card featured">
-                <div className="service-header">
-                  <div className="service-icon">⚡</div>
-                  <span className="service-badge">{t.mostPopular}</span>
+            <div className="services-grid-wrapper">
+              <div className="services-grid">
+                <div className="service-card featured">
+                  <div className="service-header">
+                    <div className="service-icon">⚡</div>
+                    <span className="service-badge">{t.mostPopular}</span>
+                  </div>
+                  <h3>{t.emergencyStaffing}</h3>
+                  <p>{t.emergencyStaffingDesc}</p>
+                  <div className="service-features">
+                    <span>{t.responseTime4h}</span>
+                    <span>{t.prescreenedWorkers}</span>
+                    <span>{t.availability247}</span>
+                  </div>
+                  <a href="tel:514-463-4117" className="service-cta">{t.callNow}</a>
                 </div>
-                <h3>{t.emergencyStaffing}</h3>
-                <p>{t.emergencyStaffingDesc}</p>
-                <div className="service-features">
-                  <span>{t.responseTime4h}</span>
-                  <span>{t.prescreenedWorkers}</span>
-                  <span>{t.availability247}</span>
-                </div>
-                <a href="tel:514-463-4117" className="service-cta">{t.callNow}</a>
-              </div>
 
-              <div className="service-card">
-                <div className="service-header">
-                  <div className="service-icon">🏭</div>
+                <div className="service-card">
+                  <div className="service-header">
+                    <div className="service-icon">🏭</div>
+                  </div>
+                  <h3>{t.manufacturingPersonnel}</h3>
+                  <p>{t.manufacturingPersonnelDesc}</p>
+                  <div className="service-features">
+                    <span>{t.experiencedOperators}</span>
+                    <span>{t.safetyCertified}</span>
+                    <span>{t.flexibleContracts}</span>
+                  </div>
+                  <a href="mailto:info@azcardinal.ca" className="service-cta">{t.getQuote}</a>
                 </div>
-                <h3>{t.manufacturingPersonnel}</h3>
-                <p>{t.manufacturingPersonnelDesc}</p>
-                <div className="service-features">
-                  <span>{t.experiencedOperators}</span>
-                  <span>{t.safetyCertified}</span>
-                  <span>{t.flexibleContracts}</span>
-                </div>
-                <a href="mailto:info@azcardinal.ca" className="service-cta">{t.getQuote}</a>
-              </div>
 
-              <div className="service-card">
-                <div className="service-header">
-                  <div className="service-icon">📈</div>
+                <div className="service-card">
+                  <div className="service-header">
+                    <div className="service-icon">📈</div>
+                  </div>
+                  <h3>{t.seasonalScaling}</h3>
+                  <p>{t.seasonalScalingDesc}</p>
+                  <div className="service-features">
+                    <span>{t.scalableSols}</span>
+                    <span>{t.longTermContracts}</span>
+                    <span>{t.teamCoordination}</span>
+                  </div>
+                  <a href="mailto:info@azcardinal.ca" className="service-cta">{t.learnMore}</a>
                 </div>
-                <h3>{t.seasonalScaling}</h3>
-                <p>{t.seasonalScalingDesc}</p>
-                <div className="service-features">
-                  <span>{t.scalableSols}</span>
-                  <span>{t.longTermContracts}</span>
-                  <span>{t.teamCoordination}</span>
-                </div>
-                <a href="mailto:info@azcardinal.ca" className="service-cta">{t.learnMore}</a>
-              </div>
 
-              <div className="service-card">
-                <div className="service-header">
-                  <div className="service-icon">🎯</div>
+                <div className="service-card">
+                  <div className="service-header">
+                    <div className="service-icon">🎯</div>
+                  </div>
+                  <h3>{t.specializedRoles}</h3>
+                  <p>{t.specializedRolesDesc}</p>
+                  <div className="service-features">
+                    <span>{t.certifiedOperators}</span>
+                    <span>{t.skillVerification}</span>
+                    <span>{t.trainingSupport}</span>
+                  </div>
+                  <a href="mailto:info@azcardinal.ca" className="service-cta">{t.discussNeeds}</a>
                 </div>
-                <h3>{t.specializedRoles}</h3>
-                <p>{t.specializedRolesDesc}</p>
-                <div className="service-features">
-                  <span>{t.certifiedOperators}</span>
-                  <span>{t.skillVerification}</span>
-                  <span>{t.trainingSupport}</span>
-                </div>
-                <a href="mailto:info@azcardinal.ca" className="service-cta">{t.discussNeeds}</a>
+              </div>
+              <div className="scroll-hint">
+                <span>{t.scrollHint}</span>
               </div>
             </div>
           </div>
